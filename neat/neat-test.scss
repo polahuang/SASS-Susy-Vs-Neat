@@ -1,0 +1,37 @@
+$visual-grid: false;
+$visual-grid-index: front;
+$max-width: 900px;
+
+@import "bourbon";
+@import "neat";
+
+.my-container
+{
+    @include outer-container();
+}
+
+$mobile: new-breakpoint(max-width 500px);
+
+@for $i from 1 through 50
+{
+    .item-#{$i}
+    {
+        background: blue;
+        height: 40px;
+
+        margin-bottom: 10px;
+
+        @include span-columns(6);
+
+        &:nth-child(2n)
+        {
+            @include omega;
+        }
+
+        @include media($mobile)
+        {
+            background: red;
+            @include fill-parent;
+        }
+    }
+}
